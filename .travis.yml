@@ -5,7 +5,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t javiergatto/front-end -f Dockerfile.dev .
+  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true javiergatto/front-end npm run test
+  - docker run -e CI=true stephengrider/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'front-end'
+  env: 'Frontend-env'
+  bucket_name: 'elasticbeanstalk-us-east-2-065759357371'
+  bucket_path: 'front-end'
+  on:
+    branch: master
+  secret_access_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+
+
