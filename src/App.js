@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>low on found , send some at only fands account!</p>
+        <p>low on funds , send some at fans only account!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
